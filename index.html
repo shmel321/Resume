@@ -1,0 +1,1088 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Кутев Алексей | Резюме</title>
+<meta name="description" content="Резюме специалиста по тестированию программного обеспечения" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-0:#0a0a0a;
+    --bg-1:#111111;
+    --bg-2:#1a1a1a;
+    --text-0:#ffffff;
+    --text-1:#bdbdbd;
+    --accent:#f5b900;
+    --accent-dim: rgba(245,185,0,0.14);
+    --border-soft: rgba(255,255,255,0.08);
+    --border-soft-strong: rgba(255,255,255,0.14);
+    --radius-l: 22px;
+    --radius-m: 16px;
+    --font-display: 'Manrope', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --ease: cubic-bezier(.16,.84,.32,1);
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background: var(--bg-0);
+    color: var(--text-0);
+    font-family: var(--font-display);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection{ background: var(--accent); color:#0a0a0a; }
+
+  a{ color:inherit; text-decoration:none; }
+
+  /* ---------- Background grid canvas ---------- */
+  #grid-canvas{
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .bg-glow{
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(circle 700px at 18% 0%, rgba(245,185,0,0.10), transparent 60%),
+      radial-gradient(circle 600px at 100% 40%, rgba(245,185,0,0.05), transparent 60%);
+  }
+
+  main, header, footer{ position: relative; z-index: 1; }
+
+  /* ---------- Layout helpers ---------- */
+  .wrap{
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  section{ padding: 160px 0; border-top: 20px solid transparent; scroll-margin-top: 88px; }
+  section:first-of-type{ border-top: none; }
+
+  .eyebrow{
+    display:flex;
+    align-items:center;
+    gap: 20px;
+    font-family: var(--font-mono);
+    font-size: 15px;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    margin-bottom: 22px;
+    text-transform: uppercase;
+  }
+  .eyebrow .num{ color: var(--text-1); }
+  .eyebrow::after{
+    content:'';
+    flex: 1;
+    height: 1px;
+    background: var(--border-soft);
+  }
+
+  h2.section-title{
+    font-size: clamp(32px, 4vw, 46px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 50px;
+    max-width: 720px;
+  }
+
+  /* ---------- Reveal on scroll ---------- */
+  .reveal{
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .8s var(--ease), transform .8s var(--ease);
+  }
+  .reveal.in{
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ---------- Header / Nav ---------- */
+  header{
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    background: rgba(10,10,10,0.55);
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .nav-inner{
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 18px 32px;
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+  }
+  .logo{
+    font-weight: 800;
+    font-size: 17px;
+    letter-spacing: -0.01em;
+    display:flex;
+    align-items:center;
+    gap: 10px;
+  }
+  .logo .dot{
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--accent);
+  }
+  nav.links{
+    display:flex;
+    gap: 36px;
+    font-size: 14.5px;
+    color: var(--text-1);
+  }
+  nav.links a{
+    position: relative;
+    padding: 4px 0;
+    transition: color .25s var(--ease);
+  }
+  nav.links a:hover{ color: var(--text-0); }
+  nav.links a::after{
+    content:'';
+    position:absolute;
+    left:0; bottom:0;
+    width:0; height:1px;
+    background: var(--accent);
+    transition: width .3s var(--ease);
+  }
+  nav.links a:hover::after{ width: 100%; }
+
+  .nav-status{
+    display:flex;
+    align-items:center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: var(--text-1);
+    border: 1px solid var(--border-soft);
+    padding: 7px 14px;
+    border-radius: 100px;
+    background: rgba(255,255,255,0.02);
+  }
+  .nav-status .pulse{
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #57d973;
+    box-shadow: 0 0 8px #57d973;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse{
+    0%,100%{ opacity:1; }
+    50%{ opacity: .35; }
+  }
+
+  .nav-toggle{
+    display:none;
+    width: 36px; height: 36px;
+    border: 1px solid var(--border-soft);
+    border-radius: 9px;
+    background: transparent;
+    color: var(--text-0);
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+  }
+
+  .mobile-menu{
+    display:none;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px 22px 20px;
+    border-top: 1px solid var(--border-soft);
+    background: rgba(10,10,10,0.85);
+  }
+  .mobile-menu a{
+    padding: 14px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-1);
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .mobile-menu a:hover{ color: var(--accent); }
+  .mobile-menu.open{ display:flex; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    min-height: 100vh;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 120px;
+    padding-bottom: 80px;
+    border-top: none;
+  }
+  .hero-tag{
+    display:inline-flex;
+    align-items:center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent);
+    border: 1px solid rgba(245,185,0,0.3);
+    background: var(--accent-dim);
+    padding: 7px 16px 7px 12px;
+    border-radius: 100px;
+    margin-bottom: 32px;
+    width: fit-content;
+  }
+  .hero-tag .pulse{
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s infinite;
+  }
+
+  .hero-title{
+    font-size: clamp(46px, 7.5vw, 92px);
+    font-weight: 800;
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+    max-width: 920px;
+    overflow-wrap: break-word;
+  }
+  .hero-title .accent{ color: var(--accent); }
+  .hero-title .muted{ color: var(--text-1); font-weight: 600; }
+
+  .hero-sub{
+    margin-top: 28px;
+    font-size: clamp(16px, 1.6vw, 19px);
+    color: var(--text-1);
+    max-width: 560px;
+    line-height: 1.6;
+  }
+
+  .hero-cta-row{
+    display:flex;
+    align-items:center;
+    gap: 22px;
+    margin-top: 44px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary{
+    display:inline-flex;
+    align-items:center;
+    gap: 10px;
+    background: var(--accent);
+    color: #0a0a0a;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 16px 28px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+    box-shadow: 0 0 0 0 rgba(245,185,0,0.5);
+  }
+  .btn-primary:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 14px 34px -10px rgba(245,185,0,0.55);
+  }
+  .btn-primary svg{ transition: transform .35s var(--ease); }
+  .btn-primary:hover svg{ transform: translateX(3px); }
+
+  .btn-ghost{
+    display:inline-flex;
+    align-items:center;
+    gap: 10px;
+    color: var(--text-0);
+    font-weight: 600;
+    font-size: 15px;
+    padding: 16px 6px;
+    border-bottom: 1px solid var(--border-soft-strong);
+    transition: border-color .3s var(--ease), color .3s var(--ease);
+  }
+  .btn-ghost:hover{ border-color: var(--accent); color: var(--accent); }
+
+  .hero-meta{
+    display:grid;
+    grid-template-columns: repeat(5, auto);
+    gap: 44px;
+    margin-top: 96px;
+    padding-top: 36px;
+    border-top: 1px solid var(--border-soft);
+    max-width: 920px;
+  }
+  .meta-item .label{
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-1);
+    margin-bottom: 8px;
+  }
+  .meta-item .value{
+    font-size: 17px;
+    font-weight: 700;
+  }
+  .meta-item .value.small{ font-size: 15px; font-weight: 600; color: var(--text-0); }
+
+  /* ---------- Cards generic ---------- */
+  .card{
+    background: linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0.0));
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-l);
+    padding: 36px;
+    transition: border-color .35s var(--ease), transform .35s var(--ease), box-shadow .35s var(--ease), background .35s var(--ease);
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before{
+    content:'';
+    position:absolute;
+    inset: -1px;
+    border-radius: var(--radius-l);
+    background: radial-gradient(420px circle at var(--mx,50%) var(--my,50%), rgba(245,185,0,0.12), transparent 60%);
+    opacity: 0;
+    transition: opacity .4s ease;
+    pointer-events:none;
+  }
+  .card:hover::before{ opacity: 1; }
+  .card:hover{
+    border-color: rgba(245,185,0,0.35);
+    transform: translateY(-4px);
+    box-shadow: 0 24px 48px -24px rgba(0,0,0,0.6);
+  }
+
+  /* ---------- About ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 28px;
+    align-items: stretch;
+  }
+  .about-lead{
+    font-size: clamp(20px, 2.4vw, 28px);
+    font-weight: 600;
+    line-height: 1.45;
+    letter-spacing: -0.01em;
+    margin-bottom: 28px;
+  }
+  .about-lead .accent{ color: var(--accent); }
+  .about-text p{
+    color: var(--text-1);
+    font-size: 16px;
+    line-height: 1.75;
+    margin-bottom: 16px;
+  }
+  .about-side{
+    display:flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .stack-card .stack-label{
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+  }
+  .tag-cloud{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .tag{
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text-0);
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border-soft);
+    padding: 8px 14px;
+    border-radius: 9px;
+    transition: border-color .3s var(--ease), color .3s var(--ease);
+  }
+  .tag:hover{ border-color: var(--accent); color: var(--accent); }
+
+  .quote-card{
+    flex: 1;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .quote-card p{
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--text-0);
+    font-weight: 500;
+  }
+  .quote-card .quote-mark{
+    font-size: 48px;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 12px;
+    font-family: var(--font-display);
+    font-weight: 800;
+  }
+
+  /* ---------- Skills ---------- */
+  .skills-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+  .skill-card .skill-icon{
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    background: var(--accent-dim);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom: 24px;
+    font-size: 22px;
+  }
+  .skill-card h3{
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .skill-card p{
+    font-size: 14.5px;
+    color: var(--text-1);
+    line-height: 1.6;
+  }
+
+  /* ---------- Timeline (experience + education) ---------- */
+  .timeline{
+    display:flex;
+    flex-direction: column;
+  }
+  .tl-item{
+    display:grid;
+    grid-template-columns: 160px 28px 1fr;
+    gap: 0;
+    padding-bottom: 52px;
+    position: relative;
+  }
+  .tl-item:last-child{ padding-bottom: 0; }
+  .tl-period{
+    font-family: var(--font-mono);
+    font-size: 13.5px;
+    color: var(--text-1);
+    padding-top: 4px;
+  }
+  .tl-line{
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+  }
+  .tl-dot{
+    width: 11px; height: 11px;
+    border-radius: 50%;
+    background: var(--bg-0);
+    border: 2px solid var(--accent);
+    box-shadow: 0 0 14px rgba(245,185,0,0.5);
+    margin-top: 4px;
+    flex-shrink: 0;
+  }
+  .tl-stem{
+    width: 1px;
+    flex: 1;
+    background: var(--border-soft);
+    margin-top: 6px;
+  }
+  .tl-item:last-child .tl-stem{ display:none; }
+  .tl-content{ padding-left: 28px; padding-top: 0; }
+  .tl-role{
+    font-size: 19px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+  .tl-org{
+    font-size: 14.5px;
+    color: var(--accent);
+    font-family: var(--font-mono);
+    margin-bottom: 14px;
+  }
+  .tl-desc{
+    color: var(--text-1);
+    font-size: 15px;
+    line-height: 1.7;
+    max-width: 560px;
+  }
+
+  /* ---------- Extra info (qualities) ---------- */
+  .qualities-grid{
+    display:grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+  .quality-pill{
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-m);
+    padding: 28px 20px;
+    text-align:center;
+    background: rgba(255,255,255,0.02);
+    transition: border-color .3s var(--ease), transform .3s var(--ease);
+  }
+  .quality-pill:hover{
+    border-color: rgba(245,185,0,0.35);
+    transform: translateY(-3px);
+  }
+  .quality-pill .q-num{
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .quality-pill .q-label{
+    font-size: 14.5px;
+    font-weight: 600;
+  }
+
+  /* ---------- Contact ---------- */
+  .contact-panel{
+    border: 1px solid var(--border-soft);
+    border-radius: 28px;
+    padding: 72px 64px;
+    background: radial-gradient(circle 480px at 80% 20%, rgba(245,185,0,0.08), transparent 70%), var(--bg-1);
+    display:flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .contact-panel h2{
+    font-size: clamp(30px, 4vw, 44px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    max-width: 480px;
+  }
+  .contact-panel h2 .accent{ color: var(--accent); }
+  .contact-links{
+    display:flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .contact-link{
+    display:flex;
+    align-items:center;
+    gap: 14px;
+    font-size: 17px;
+    font-weight: 600;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border-soft);
+    transition: color .3s var(--ease), border-color .3s var(--ease), padding-left .3s var(--ease);
+    min-width: 320px;
+  }
+  .contact-link .ic{
+    width: 38px; height:38px;
+    border-radius: 10px;
+    background: var(--accent-dim);
+    display:flex; align-items:center; justify-content:center;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+  .contact-link:hover{ color: var(--accent); padding-left: 6px; }
+  .contact-link:hover .ic{ background: var(--accent); color: #0a0a0a; }
+
+  footer{
+    padding: 40px 0 56px;
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    color: var(--text-1);
+    font-size: 13.5px;
+    font-family: var(--font-mono);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 980px){
+    .about-grid{ grid-template-columns: 1fr; }
+    .skills-grid{ grid-template-columns: repeat(2, 1fr); }
+    .qualities-grid{ grid-template-columns: repeat(2, 1fr); }
+    .hero-meta{ grid-template-columns: repeat(2, auto); gap: 28px 36px; }
+    .contact-panel{ flex-direction: column; align-items: flex-start; padding: 48px 36px; }
+  }
+
+  @media (max-width: 720px){
+    section{ padding: 96px 0; }
+    .wrap{ padding: 0 22px; }
+    nav.links{ display:none; }
+    .nav-status{ display:none; }
+    .nav-toggle{ display:flex; }
+    .skills-grid{ grid-template-columns: 1fr; }
+    .qualities-grid{ grid-template-columns: 1fr 1fr; }
+    .tl-item{ grid-template-columns: 28px 1fr; }
+    .tl-period{ display:none; }
+    .tl-content{ padding-left: 16px; }
+    .contact-panel{ border-radius: 20px; padding: 36px 24px; }
+    .contact-link{ min-width: 0; width: 100%; }
+    h2.section-title{ font-size: 30px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ transition: none !important; animation: none !important; }
+    .reveal{ opacity:1; transform:none; }
+  }
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+</style>
+</head>
+<body>
+
+<canvas id="grid-canvas"></canvas>
+<div class="bg-glow"></div>
+
+<header>
+  <div class="nav-inner">
+    <div class="logo"><span class="dot"></span>Алексей Кутев</div>
+    <nav class="links">
+      <a href="#about">Обо мне</a>
+      <a href="#skills">Навыки</a>
+      <a href="#education">Образование</a>
+      <a href="#experience">Опыт</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+    <div></div>
+    <button class="nav-toggle" id="navToggle" aria-label="Открыть меню" aria-expanded="false">☰</button>
+  </div>
+  <nav class="mobile-menu" id="mobileMenu">
+    <a href="#about">Обо мне</a>
+    <a href="#skills">Навыки</a>
+    <a href="#education">Образование</a>
+    <a href="#experience">Опыт</a>
+    <a href="#contact">Контакты</a>
+  </nav>
+</header>
+
+<main>
+
+  <section class="hero wrap" id="hero">
+    <div class="hero-tag"><span class="pulse"></span>Специалист в области тестирования и IT</div>
+    <h1 class="hero-title">
+      Кутев Алексей Юрьевич<br>
+    </h1>
+    <p class="hero-sub">
+      Начинающий специалист по тестированию программного обеспечения. Нахожу баги, пишу тест-кейсы и обеспечиваю качество продукта до того, как его увидят пользователи.
+    </p>
+    <div class="hero-cta-row">
+      <a href="#contact" class="btn-primary">
+        Связаться со мной
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#0a0a0a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#experience" class="btn-ghost">Посмотреть опыт</a>
+    </div>
+
+    <div class="hero-meta">
+      <div class="meta-item">
+        <div class="label">Дата рождения</div>
+        <div class="value">11.06.2007</div>
+      </div>
+      <div class="meta-item">
+        <div class="label">Занятость</div>
+        <div class="value">Полная</div>
+      </div>
+      <div class="meta-item">
+        <div class="label">График</div>
+        <div class="value">Гибкий</div>
+      </div>
+      <div class="meta-item">
+        <div class="label">Локация</div>
+        <div class="value">Вологда</div>
+      </div>
+      <div class="meta-item">
+        <div class="label">Переезд</div>
+        <div class="value small">Готов к переезду</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="wrap">
+    <div class="eyebrow"><span class="num">01</span> Обо мне</div>
+    <h2 class="section-title reveal">Основная информация</h2>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p class="about-lead">Стремлюсь обеспечивать высокое качество программных продуктов через тщательное тестирование, выявление ошибок и <span class="accent">улучшение пользовательского опыта</span>.</p>
+        <p>Быстро погружаюсь в новые проекты, эффективно изучаю предметную область и уверенно работаю по технической документации.</p>
+        <p>Умею работать с базами данных SQL, тестировать API через Postman, ознакомлен с различными языками программирования - это позволяет находить дефекты не только на уровне интерфейса, но и глубже.</p>
+      </div>
+      <div class="about-side reveal">
+        <div class="card stack-card">
+          <div class="stack-label">Технологический стек</div>
+          <div class="tag-cloud">
+            <span class="tag">SQL</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">Postman</span>
+            <span class="tag">REST API</span>
+            <span class="tag">Git</span>
+            <span class="tag">SQLite</span>
+            <span class="tag">Python</span>
+            <span class="tag">Flask</span>
+          </div>
+        </div>
+        <div>
+          <div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="qualities" class="wrap">
+    <h1>Личные качества</h1>
+    <div class="qualities-grid">
+      <div class="quality-pill reveal"><div class="q-num">01</div><div class="q-label">Внимательность к деталям</div></div>
+      <div class="quality-pill reveal"><div class="q-num">02</div><div class="q-label">Усидчивость</div></div>
+      <div class="quality-pill reveal"><div class="q-num">03</div><div class="q-label">Ответственность</div></div>
+      <div class="quality-pill reveal"><div class="q-num">04</div><div class="q-label">Работа в команде</div></div>
+      <div class="quality-pill reveal"><div class="q-num">05</div><div class="q-label">Обучаемость</div></div>
+    </div>
+  </section>
+
+  <section id="skills" class="wrap">
+    <div class="eyebrow"><span class="num">02</span> Навыки</div>
+    <h2 class="section-title reveal">Что умею</h2>
+    <div class="skills-grid">
+      <div class="card skill-card reveal">
+        <div class="skill-icon">🔍︎</div>
+        <h3>Ручное тестирование</h3>
+        <p>Функциональное, регрессионное и smoke-тестирование продукта на всех этапах разработки.</p>
+      </div>
+      <div class="card skill-card reveal">
+        <div class="skill-icon">⚡︎</div>
+        <h3>API / Postman</h3>
+        <p>Тестирование REST API: проверка запросов, ответов, статусов и граничных случаев.</p>
+      </div>
+      <div class="card skill-card reveal">
+        <div class="skill-icon">🛢</div>
+        <h3>SQL</h3>
+        <p>Работа с PostgreSQL и MySQL: проверка данных, написание запросов для тест-сценариев.</p>
+      </div>
+      <div class="card skill-card reveal">
+        <div class="skill-icon">⌨</div>
+        <h3>Установка ПО</h3>
+        <p>Настройка программ и рабочих мест, подготовка тестовой среды и окружения.</p>
+      </div>
+      <div class="card skill-card reveal">
+        <div class="skill-icon">🗎</div>
+        <h3>Документация</h3>
+        <p>Составление тест-кейсов, чек-листов и баг-репортов с понятной структурой.</p>
+      </div>
+      <div class="card skill-card reveal">
+        <div class="skill-icon">🛠</div>
+        <h3>IT-поддержка</h3>
+        <p>Диагностика неисправностей оборудования и программного обеспечения.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="education" class="wrap">
+    <div class="eyebrow"><span class="num">03</span> Образование</div>
+    <h2 class="section-title reveal">Где учился</h2>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-period">Окончание — 2027</div>
+        <div class="tl-line"><div class="tl-dot"></div></div>
+        <div class="tl-content">
+          <div class="tl-role">Среднее специальное образование</div>
+          <div class="tl-org">АПОУ ВКСиИТ</div>
+          <p class="tl-desc">Специалист в области тестирования и информационных технологий.</p>
+          <p class="tl-desc">Очная форма обучения.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="wrap">
+    <div class="eyebrow"><span class="num">04</span> Опыт</div>
+    <h2 class="section-title reveal">Где работал</h2>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-period">Апр — Май 2026</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-stem"></div></div>
+        <div class="tl-content">
+          <div class="tl-role">Специалист в области тестирования</div>
+          <div class="tl-org">ООО "Агрострой"</div>
+          <p class="tl-desc">Работа с базами данных SQLite. Разработка сайта на Flask с базой данных. Проверка работоспособности оборудования и программ. Выполнение поручений по настройке рабочих мест.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-period">Окт — Дек 2025</div>
+        <div class="tl-line"><div class="tl-dot"></div></div>
+        <div class="tl-content">
+          <div class="tl-role">Специалист в области тестирования</div>
+          <div class="tl-org">ООО "Лес-Инвест"</div>
+          <p class="tl-desc">Сопровождение и обслуживание программного обеспечения. Разработка сайта для компании и дальнейшее его тестирование.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="contact" class="wrap">
+    <div class="eyebrow"><span class="num">05</span> Контакты</div>
+    <div class="contact-panel reveal">
+      <h2>Готов обсудить <span class="accent">вашу вакансию</span> - напишите или позвоните</h2>
+      <div class="contact-links">
+        <a class="contact-link" href="tel:+79005070911">
+          <span class="ic">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1.5 1.5 0 0 1 1.5-.35 11.4 11.4 0 0 0 3.6.6 1.5 1.5 0 0 1 1.5 1.5V20a1.5 1.5 0 0 1-1.5 1.5A18 18 0 0 1 2.5 3.5 1.5 1.5 0 0 1 4 2h3.1a1.5 1.5 0 0 1 1.5 1.5 11.4 11.4 0 0 0 .6 3.6 1.5 1.5 0 0 1-.35 1.5L6.6 10.8z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          </span>
+          +7 900 507 09 11
+        </a>
+        <a class="contact-link" href="mailto:kutev026@gmail.com">
+          <span class="ic">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 5.5h18A1.5 1.5 0 0 1 22.5 7v10a1.5 1.5 0 0 1-1.5 1.5H3A1.5 1.5 0 0 1 1.5 17V7A1.5 1.5 0 0 1 3 5.5z" stroke="currentColor" stroke-width="1.5"/><path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          kutev026@gmail.com
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <span>ㅤ</span>
+  <span>ㅤ</span>
+</footer>
+
+<script>
+/* ===================== Interactive grid background ===================== */
+(function(){
+  const canvas = document.getElementById('grid-canvas');
+  const ctx = canvas.getContext('2d');
+  let w, h, dpr;
+  let mouse = { x: -9999, y: -9999, active:false };
+  const GRID_SIZE = 56;
+  const INFLUENCE_RADIUS = 220;
+  const MAX_DISPLACE = 14;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function resize(){
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = window.innerWidth;
+    h = window.innerHeight;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    canvas.style.width = w + 'px';
+    canvas.style.height = h + 'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  window.addEventListener('pointermove', (e)=>{
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+    mouse.active = true;
+  });
+  window.addEventListener('pointerleave', ()=>{ mouse.active = false; });
+  window.addEventListener('pointerdown', (e)=>{ mouse.x = e.clientX; mouse.y = e.clientY; mouse.active = true; });
+
+  // Touch fallback - subtle ambient drift when no pointer
+  let t = 0;
+
+  function draw(){
+    t += 0.004;
+    ctx.clearRect(0,0,w,h);
+
+    const cols = Math.ceil(w / GRID_SIZE) + 2;
+    const rows = Math.ceil(h / GRID_SIZE) + 2;
+
+    // ambient base mouse if inactive (subtle floating glow)
+    let mx = mouse.active ? mouse.x : (w*0.5 + Math.cos(t)*w*0.18);
+    let my = mouse.active ? mouse.y : (h*0.4 + Math.sin(t*1.3)*h*0.18);
+
+    // precompute displaced node positions
+    const nodes = [];
+    for(let i=0;i<=cols;i++){
+      nodes[i] = [];
+      for(let j=0;j<=rows;j++){
+        let x = i*GRID_SIZE - GRID_SIZE;
+        let y = j*GRID_SIZE - GRID_SIZE;
+        const dx = x - mx;
+        const dy = y - my;
+        const dist = Math.sqrt(dx*dx+dy*dy);
+        if(dist < INFLUENCE_RADIUS){
+          const force = (1 - dist/INFLUENCE_RADIUS);
+          const eased = force*force;
+          const angle = Math.atan2(dy,dx);
+          x -= Math.cos(angle) * eased * MAX_DISPLACE;
+          y -= Math.sin(angle) * eased * MAX_DISPLACE;
+        }
+        nodes[i][j] = {x,y,dist};
+      }
+    }
+
+    ctx.lineWidth = 1;
+
+    // horizontal lines
+    for(let j=0;j<=rows;j++){
+      ctx.beginPath();
+      for(let i=0;i<=cols;i++){
+        const n = nodes[i][j];
+        if(i===0) ctx.moveTo(n.x,n.y); else ctx.lineTo(n.x,n.y);
+      }
+      ctx.strokeStyle = 'rgba(255,255,255,0.045)';
+      ctx.stroke();
+    }
+    // vertical lines
+    for(let i=0;i<=cols;i++){
+      ctx.beginPath();
+      for(let j=0;j<=rows;j++){
+        const n = nodes[i][j];
+        if(j===0) ctx.moveTo(n.x,n.y); else ctx.lineTo(n.x,n.y);
+      }
+      ctx.strokeStyle = 'rgba(255,255,255,0.045)';
+      ctx.stroke();
+    }
+
+    // glow near cursor: highlighted lines + soft radial glow
+    const grad = ctx.createRadialGradient(mx,my,0,mx,my,INFLUENCE_RADIUS);
+    grad.addColorStop(0, 'rgba(245,185,0,0.16)');
+    grad.addColorStop(1, 'rgba(245,185,0,0)');
+    ctx.fillStyle = grad;
+    ctx.beginPath();
+    ctx.arc(mx,my,INFLUENCE_RADIUS,0,Math.PI*2);
+    ctx.fill();
+
+    // highlighted grid lines close to cursor (redraw subset brighter)
+    for(let i=0;i<=cols;i++){
+      for(let j=0;j<rows;j++){
+        const a = nodes[i][j];
+        const b = nodes[i][j+1];
+        if(a.dist < INFLUENCE_RADIUS*0.7 || b.dist < INFLUENCE_RADIUS*0.7){
+          const opacity = Math.max(0, 1 - Math.min(a.dist,b.dist)/(INFLUENCE_RADIUS*0.7)) * 0.35;
+          ctx.beginPath();
+          ctx.moveTo(a.x,a.y);
+          ctx.lineTo(b.x,b.y);
+          ctx.strokeStyle = `rgba(245,185,0,${opacity})`;
+          ctx.stroke();
+        }
+      }
+    }
+    for(let j=0;j<=rows;j++){
+      for(let i=0;i<cols;i++){
+        const a = nodes[i][j];
+        const b = nodes[i+1][j];
+        if(a.dist < INFLUENCE_RADIUS*0.7 || b.dist < INFLUENCE_RADIUS*0.7){
+          const opacity = Math.max(0, 1 - Math.min(a.dist,b.dist)/(INFLUENCE_RADIUS*0.7)) * 0.35;
+          ctx.beginPath();
+          ctx.moveTo(a.x,a.y);
+          ctx.lineTo(b.x,b.y);
+          ctx.strokeStyle = `rgba(245,185,0,${opacity})`;
+          ctx.stroke();
+        }
+      }
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  if(!reduceMotion){
+    requestAnimationFrame(draw);
+  } else {
+    // static subtle grid for reduced motion
+    ctx.strokeStyle = 'rgba(255,255,255,0.045)';
+    for(let x=0;x<w;x+=GRID_SIZE){ ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,h); ctx.stroke(); }
+    for(let y=0;y<h;y+=GRID_SIZE){ ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(w,y); ctx.stroke(); }
+  }
+})();
+
+/* ===================== Scroll reveal ===================== */
+(function(){
+  const items = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+  items.forEach(it=>io.observe(it));
+})();
+
+/* ===================== Card cursor glow (local) ===================== */
+(function(){
+  const cards = document.querySelectorAll('.card');
+  cards.forEach(card=>{
+    card.addEventListener('mousemove', (e)=>{
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
+      card.style.setProperty('--my', (e.clientY - rect.top) + 'px');
+    });
+  });
+})();
+
+/* ===================== Hero parallax ===================== */
+(function(){
+  const hero = document.getElementById('hero');
+  const title = hero.querySelector('.hero-title');
+  const sub = hero.querySelector('.hero-sub');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduceMotion) return;
+
+  window.addEventListener('pointermove', (e)=>{
+    const cx = window.innerWidth/2;
+    const cy = window.innerHeight/2;
+    const dx = (e.clientX - cx) / cx;
+    const dy = (e.clientY - cy) / cy;
+    title.style.transform = `translate(${dx*8}px, ${dy*6}px)`;
+    sub.style.transform = `translate(${dx*4}px, ${dy*3}px)`;
+  });
+})();
+
+/* ===================== Mobile nav toggle ===================== */
+(function(){
+  const toggle = document.getElementById('navToggle');
+  const menu = document.getElementById('mobileMenu');
+  toggle.addEventListener('click', ()=>{
+    const isOpen = menu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    toggle.textContent = isOpen ? '✕' : '☰';
+  });
+  menu.querySelectorAll('a').forEach(a=>{
+    a.addEventListener('click', ()=>{
+      menu.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.textContent = '☰';
+    });
+  });
+})();
+
+/* ===================== Smooth anchor scroll ===================== */
+(function(){
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', function(e){
+      const target = document.querySelector(this.getAttribute('href'));
+      if(target){
+        e.preventDefault();
+        target.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
